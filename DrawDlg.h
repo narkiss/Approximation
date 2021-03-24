@@ -1,0 +1,44 @@
+#pragma once
+
+//объявление и определение класса для построения графика
+
+#include<Drawer.h>
+#include "stdafx.h"
+
+class CDrawDlg : public CDialogEx
+{
+	// Создание
+public:
+	CDrawDlg(CWnd* pParent = NULL);	// стандартный конструктор
+
+// Данные диалогового окна
+#ifdef AFX_DESIGN_TIME
+	enum { IDD = IDD_DRAW_DIALOG };
+#endif
+
+protected:
+	virtual void DoDataExchange(CDataExchange* pDX);	// поддержка DDX/DDV
+
+
+// Реализация
+protected:
+	HICON m_hIcon;
+
+	// Созданные функции схемы сообщений
+	virtual BOOL OnInitDialog();
+	afx_msg void OnPaint();
+	afx_msg HCURSOR OnQueryDragIcon();
+	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedOk();
+	Drawer drv;
+	afx_msg void OnStnClickedPicture();
+	CEdit _m;
+	CEdit _n;
+	CEdit _S;
+	int last_m;
+	double s_edit;
+	double* x_buff;
+	double* y_buff;
+	bool first_initialization;
+};
